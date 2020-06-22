@@ -1,27 +1,29 @@
 var MetaParameters = require('./MetaParameters');
-class updateRecordingsParameteres extends MetaParameters{
+
+class updateRecordingsParameteres extends MetaParameters {
     constructor(recordingId) {
         super();
         this.recordingId = recordingId;
     }
-   getRecordingId()
-    {
+
+    getRecordingId() {
         return this.recordingId;
     }
-    setRecordingId(recordingId)
-    {
+
+    setRecordingId(recordingId) {
         this.recordingId = recordingId;
         return this;
     }
-    getHTTPQuery()
-    {
-       var queries = {
-            'recordID' : this.recordingId
-    };
+
+    getHTTPQuery() {
+        var queries = {
+            'recordID': this.recordingId
+        };
         super.buildMeta(queries);
         return super.buildHTTPQuery(queries);
     }
 
 
 }
-module.exports=updateRecordingsParameteres;
+
+module.exports = updateRecordingsParameteres;

@@ -1,38 +1,39 @@
 var Base = require('./BaseParametres');
 var Buffer = require('buffer').Buffer;
-class setConfigParameteres extends Base  {
+
+class setConfigParameteres extends Base {
     constructor(meetingId) {
         super();
         this.meetingId = meetingId;
 
     }
 
-   getMeetingId()
-    {
+    getMeetingId() {
         return this.meetingId;
     }
-    setMeetingId(meetingId)
-    {
+
+    setMeetingId(meetingId) {
         this.meetingId = meetingId;
         return this;
     }
-    getRawXml()
-    {
+
+    getRawXml() {
         return this.rawXml;
     }
-    setRawXml(rawXml)
-    {
+
+    setRawXml(rawXml) {
         this.rawXml = rawXml;
         return this;
     }
-   getHTTPQuery()
-    {
+
+    getHTTPQuery() {
         return super.buildHTTPQuery(
             {
-                'configXML' : Buffer.from(this.rawXml, 'ascii').toString('base64'),
-        'meetingID' : this.meetingId
-    }
-    );
+                'configXML': Buffer.from(this.rawXml, 'ascii').toString('base64'),
+                'meetingID': this.meetingId
+            }
+        );
     }
 }
-module.exports=setConfigParameteres;
+
+module.exports = setConfigParameteres;

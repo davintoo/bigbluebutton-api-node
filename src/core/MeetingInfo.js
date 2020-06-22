@@ -1,43 +1,39 @@
 var Meeting = require('./Meeting');
-class MeetingInfo extends Meeting{
-    constructor(xml)
-    {
+
+class MeetingInfo extends Meeting {
+    constructor(xml) {
         super(xml);
-        this.internalMeetingId     = xml.internalMeetingID._text;
-        this.isRecording           = xml.recording._text;
-        this.startTime             = parseFloat(xml.startTime._text);
-        this.endTime               = parseFloat(xml.endTime._text);
-        this.maxUsers              = xml.maxUsers._text;//(+0)
-        this.moderatorCount        = xml.moderatorCount._text;//(+0)
+        this.internalMeetingId = xml.internalMeetingID._text;
+        this.isRecording = xml.recording._text;
+        this.startTime = parseFloat(xml.startTime._text);
+        this.endTime = parseFloat(xml.endTime._text);
+        this.maxUsers = xml.maxUsers._text;//(+0)
+        this.moderatorCount = xml.moderatorCount._text;//(+0)
     }
-    getInternalMeetingId()
-    {
+
+    getInternalMeetingId() {
         return this.internalMeetingId;
     }
 
-    getIsRecording()
-    {
+    getIsRecording() {
         return this.isRecording;
     }
 
-    getStartTime()
-    {
+    getStartTime() {
         return this.startTime;
     }
 
-    getEndTime()
-    {
+    getEndTime() {
         return this.endTime;
     }
 
-    getMaxUsers()
-    {
+    getMaxUsers() {
         return this.maxUsers;
     }
 
-    getModeratorCount()
-    {
+    getModeratorCount() {
         return this.moderatorCount;
     }
 }
-module.exports=MeetingInfo;
+
+module.exports = MeetingInfo;

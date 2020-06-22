@@ -1,12 +1,13 @@
-
 const querystring = require('querystring');
-class BaseParametres{
-    buildHTTPQuery(obj)
-    {
+
+class BaseParametres {
+    buildHTTPQuery(obj) {
         return querystring.stringify(obj);
     }
 
-   getHTTPQuery(){}
+    getHTTPQuery() {
+    }
 
 }
-module.exports=BaseParametres;
+
+module.exports = BaseParametres;

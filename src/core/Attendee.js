@@ -49,4 +49,5 @@ class Attendee {
         return this.hasVideo;
     }
 }
-module.exports=Attendee;
+
+module.exports = Attendee;

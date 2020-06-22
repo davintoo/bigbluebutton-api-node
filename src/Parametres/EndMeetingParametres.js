@@ -1,37 +1,39 @@
 var Base = require('./BaseParametres');
-class endParameteres extends Base{
-    constructor(meetingId,password)
-    {   super();
-        this.password  = password;
+
+class endParameteres extends Base {
+    constructor(meetingId, password) {
+        super();
+        this.password = password;
         this.meetingId = meetingId;
     }
 
-    getMeetingId()
-    {
+    getMeetingId() {
         return this.meetingId;
     }
-    getPassword()
-    {
+
+    getPassword() {
         return this.password;
     }
 
-    setPassword(password)
-    {
-        this.password=password;
-        return  this;
+    setPassword(password) {
+        this.password = password;
+        return this;
     }
-    setMeetingId(meetingId)
-    {
-        this.meetingId=meetingId;
-        return  this;
+
+    setMeetingId(meetingId) {
+        this.meetingId = meetingId;
+        return this;
     }
-    getHTTPQuery()
-    {
+
+    getHTTPQuery() {
         return super.buildHTTPQuery(
-            {   'meetingID' : this.meetingId,
-                'password'  :this.password,});
+            {
+                'meetingID': this.meetingId,
+                'password': this.password,
+            });
     }
 
 
 }
-module.exports=endParameteres;
+
+module.exports = endParameteres;

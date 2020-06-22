@@ -1,34 +1,34 @@
 var Buffer = require('buffer').Buffer;
- var MetaParameters = require('./MetaParameters');
+var MetaParameters = require('./MetaParameters');
 var XMLWriter = require('xml-writer');
-var Base=require('./BaseParametres');
+var Base = require('./BaseParametres');
 const querystring = require('querystring');
 
 class CreateMeetingParameteres extends MetaParameters {
-     constructor(meetingId, meetingName) {
+    constructor(meetingId, meetingName) {
         super();
         this.meetingName = meetingName;
         this.meetingId = meetingId;
-         this.presentations = {};
-    //     this.attendeePassword = '';
-    //     this.moderatorPassword = '';
-    //     this.dialNumber = '';
-    //     this.voiceBridge = '';
-    //     this.webVoice = '';
-    //     this.logoutUrl = '';
-    //     this.record = '';
-    //     this.duration = '';
-    //     this.maxParticipants = '';
-    //     this.autoStartRecording = '';
-    //     this.allowStartStopRecording = '';
-    //     this.welcomeMessage = '';
-    //     this.moderatorOnlyMessage = '';
-    //     this.webcamsOnlyForModerator = '';
-    //     this.logo = '';
-    //     this.copyright = '';
-    //     this.muteOnStart = '';
-    //
-     }
+        this.presentations = {};
+        //     this.attendeePassword = '';
+        //     this.moderatorPassword = '';
+        //     this.dialNumber = '';
+        //     this.voiceBridge = '';
+        //     this.webVoice = '';
+        //     this.logoutUrl = '';
+        //     this.record = '';
+        //     this.duration = '';
+        //     this.maxParticipants = '';
+        //     this.autoStartRecording = '';
+        //     this.allowStartStopRecording = '';
+        //     this.welcomeMessage = '';
+        //     this.moderatorOnlyMessage = '';
+        //     this.webcamsOnlyForModerator = '';
+        //     this.logo = '';
+        //     this.copyright = '';
+        //     this.muteOnStart = '';
+        //
+    }
 
 
     getMeetingId() {
@@ -210,38 +210,37 @@ class CreateMeetingParameteres extends MetaParameters {
 
         if (content != null) {
             this.presentations[nameOrUrl] = Buffer.from(content).toString('base64');
-        }
-        else{
+        } else {
             this.presentations[nameOrUrl] = content;
         }
 
 
         return this;
     }
-    countPresentation()
-    {
+
+    countPresentation() {
 
         return Object.keys(this.presentations).length;
 
     }
 
     /* ///// */
+
     //createMeetingParams
     getPresentationsAsXML() {
         var result = '';
         if (Object.keys(this.presentations).length !== 0) {
-           var xml = new XMLWriter();
+            var xml = new XMLWriter();
             xml.startDocument('1.0', 'UTF-8');
             var module = xml.startElement('modules');
-             module.startElement('module').writeAttribute('name', 'presentation');
+            module.startElement('module').writeAttribute('name', 'presentation');
             for (const key of Object.keys(this.presentations)) {
 
-                if (this.presentations[key]===null) {
+                if (this.presentations[key] === null) {
 
                     module.startElement('document').writeAttribute('url', encodeURIComponent(key));
-                     xml.endElement();
-                }
-                else {
+                    xml.endElement();
+                } else {
                     module.startElement('document').writeAttribute('name', key).text(this.presentations[key]);
                     xml.endElement();
                     // document[0] = this.presentations[key];
@@ -255,18 +254,14 @@ class CreateMeetingParameteres extends MetaParameters {
 
             result = xml.output;
 
-           /****TEST****/
+            /****TEST****/
             var parse = require('xml-js');
             var response = parse.xml2js(result, {compact: true});
-            if(response.modules.module)
-            {
-                if(response.modules.module._attributes.name==='presentation')
-                {
+            if (response.modules.module) {
+                if (response.modules.module._attributes.name === 'presentation') {
                     console.log('+1');
                 }
             }
-
-
 
 
         }
@@ -274,38 +269,38 @@ class CreateMeetingParameteres extends MetaParameters {
         return result;
     }
 
-    getHTTPQuery()
-    {
+    getHTTPQuery() {
 
-    var b = new Base();
-    var queries = {
-        'name': this.meetingName,
-        'meetingID': this.meetingId,
-        'attendeePW': this.attendeePassword,
-        'moderatorPW': this.moderatorPassword,
-        'dialNumber': this.dialNumber,
-        'voiceBridge': this.voiceBridge,
-        'webVoice': this.webVoice,
-        'logoutURL': this.logoutUrl,
-        'record': this.record, //? 'true' : 'false'
-        'duration': this.duration,
-        'maxParticipants': this.maxParticipants,
-        'autoStartRecording': this.autoStartRecording,//? 'true' : 'false'
-        'allowStartStopRecording': this.allowStartStopRecording,//? 'true' : 'false'
-        'welcome': this.welcomeMessage,
-        'moderatorOnlyMessage': this.moderatorOnlyMessage,
-        'webcamsOnlyForModerator': this.webcamsOnlyForModerator,//? 'true' : 'false'
-        'logo': this.logo,
-        'copyright': this.copyright,
-        'muteOnStart': this.muteOnStart,
-    };
+        var b = new Base();
+        var queries = {
+            'name': this.meetingName,
+            'meetingID': this.meetingId,
+            'attendeePW': this.attendeePassword,
+            'moderatorPW': this.moderatorPassword,
+            'dialNumber': this.dialNumber,
+            'voiceBridge': this.voiceBridge,
+            'webVoice': this.webVoice,
+            'logoutURL': this.logoutUrl,
+            'record': this.record, //? 'true' : 'false'
+            'duration': this.duration,
+            'maxParticipants': this.maxParticipants,
+            'autoStartRecording': this.autoStartRecording,//? 'true' : 'false'
+            'allowStartStopRecording': this.allowStartStopRecording,//? 'true' : 'false'
+            'welcome': this.welcomeMessage,
+            'moderatorOnlyMessage': this.moderatorOnlyMessage,
+            'webcamsOnlyForModerator': this.webcamsOnlyForModerator,//? 'true' : 'false'
+            'logo': this.logo,
+            'copyright': this.copyright,
+            'muteOnStart': this.muteOnStart,
+        };
 
-    var meta=super.buildMeta(queries);
+        var meta = super.buildMeta(queries);
 
-    return b.buildHTTPQuery(meta);// SUPPEERRR call !!
+        return b.buildHTTPQuery(meta);// SUPPEERRR call !!
     }
 }
-module.exports=CreateMeetingParameteres;
+
+module.exports = CreateMeetingParameteres;
 
 
 

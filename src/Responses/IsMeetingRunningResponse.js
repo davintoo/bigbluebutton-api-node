@@ -1,15 +1,13 @@
-var BaseResponse = require('./BaseResponse');
+const BaseResponse = require('./BaseResponse');
 
 class IsMeetingRunningResponse extends BaseResponse {
-    constructor(rawXML)
-    {
+    constructor(rawXML) {
         super(rawXML);
     }
-     isRunning()
-    {
-        return this.rawXML.response.running._text;
+
+    isRunning() {
+        return this.rawXML.response.running._text === 'true';
     }
-
-
 }
-module.exports=IsMeetingRunningResponse;
+
+module.exports = IsMeetingRunningResponse;

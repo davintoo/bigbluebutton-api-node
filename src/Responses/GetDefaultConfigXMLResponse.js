@@ -1,9 +1,10 @@
-var BaseResponse = require('./BaseResponse');
+const BaseResponse = require('./BaseResponse');
+
 class GetDefaultConfigXMLResponse extends BaseResponse {
-    constructor(rawXML)
-    {
+    constructor(rawXML) {
         super(rawXML);
     }
 
 }
-module.exports=GetDefaultConfigXMLResponse;
+
+module.exports = GetDefaultConfigXMLResponse;

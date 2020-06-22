@@ -28,7 +28,8 @@ const classes = {
     UpdateRecordingsResponse
 };
 
-function dynamicClass (name) {
+function dynamicClass(name) {
     return classes[name];
 }
-module.exports=dynamicClass;
+
+module.exports = dynamicClass;

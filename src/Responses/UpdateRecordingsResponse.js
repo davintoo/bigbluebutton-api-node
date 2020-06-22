@@ -1,15 +1,15 @@
-var BaseResponse = require('./BaseResponse');
+const BaseResponse = require('./BaseResponse');
 
 class UpdateRecordingsResponse extends BaseResponse {
-    constructor(rawXML)
-    {
+    constructor(rawXML) {
         super(rawXML);
     }
-    getIsUpdated()
-    {
+
+    getIsUpdated() {
         return this.rawXML.response.updated._text;
     }
 
 
 }
-module.exports=UpdateRecordingsResponse;
+
+module.exports = UpdateRecordingsResponse;

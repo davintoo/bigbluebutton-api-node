@@ -1,101 +1,87 @@
-class Meeting{
-    constructor(xml)
-    {
-        this.meetingId             = xml.meetingID._text;
-        this.meetingName           = xml.meetingName._text;
-        this.creationTime          = parseFloat(xml.createTime._text);
-        this.creationDate          = xml.createDate._text;
-        this.voiceBridge           = parseInt(xml.voiceBridge._text);
-        this.dialNumber            = xml.dialNumber._text;
-        this.attendeePassword      = xml.attendeePW._text;
-        this.moderatorPassword     = xml.moderatorPW._text;
-        this.hasBeenForciblyEnded  = xml.hasBeenForciblyEnded._text;
-        this.isRunning             = xml.running._text;
-        this.participantCount      = parseInt(xml.participantCount._text);
-        this.listenerCount         = parseInt(xml.listenerCount._text);
+class Meeting {
+    constructor(xml) {
+        this.meetingId = xml.meetingID._text;
+        this.meetingName = xml.meetingName._text;
+        this.creationTime = parseFloat(xml.createTime._text);
+        this.creationDate = xml.createDate._text;
+        this.voiceBridge = parseInt(xml.voiceBridge._text);
+        this.dialNumber = xml.dialNumber._text;
+        this.attendeePassword = xml.attendeePW._text;
+        this.moderatorPassword = xml.moderatorPW._text;
+        this.hasBeenForciblyEnded = xml.hasBeenForciblyEnded._text;
+        this.isRunning = xml.running._text;
+        this.participantCount = parseInt(xml.participantCount._text);
+        this.listenerCount = parseInt(xml.listenerCount._text);
         this.voiceParticipantCount = parseInt(xml.voiceParticipantCount._text);
-        this.videoCount            = parseInt(xml.videoCount._text);
-        this.duration              = parseInt(xml.duration._text);
-        this.hasUserJoined         = xml.hasUserJoined._text;
+        this.videoCount = parseInt(xml.videoCount._text);
+        this.duration = parseInt(xml.duration._text);
+        this.hasUserJoined = xml.hasUserJoined._text;
     }
-    getMeetingId()
-    {
+
+    getMeetingId() {
         return this.meetingId;
     }
-    getMeetingName()
-    {
+
+    getMeetingName() {
         return this.meetingName;
     }
 
-    getCreationTime()
-    {
+    getCreationTime() {
         return this.creationTime;
     }
 
-   getCreationDate()
-    {
+    getCreationDate() {
         return this.creationDate;
     }
 
-   getVoiceBridge()
-    {
+    getVoiceBridge() {
         return this.voiceBridge;
     }
 
-    getDialNumber()
-    {
+    getDialNumber() {
         return this.dialNumber;
     }
 
-    getAttendeePassword()
-    {
+    getAttendeePassword() {
         return this.attendeePassword;
     }
 
-    getModeratorPassword()
-    {
+    getModeratorPassword() {
         return this.moderatorPassword;
     }
 
-    getHasBeenForciblyEnded()
-    {
+    getHasBeenForciblyEnded() {
         return this.hasBeenForciblyEnded;
     }
 
-    getIsRunning()
-    {
+    getIsRunning() {
         return this.isRunning;
     }
 
-    getParticipantCount()
-    {
+    getParticipantCount() {
         return this.participantCount;
     }
 
-    getListenerCount()
-    {
+    getListenerCount() {
         return this.listenerCount;
     }
 
-    getVoiceParticipantCount()
-    {
+    getVoiceParticipantCount() {
         return this.voiceParticipantCount;
     }
 
-    getVideoCount()
-    {
+    getVideoCount() {
         return this.videoCount;
     }
 
-    getDuration()
-    {
+    getDuration() {
         return this.duration;
     }
 
-    getHasUserJoined()
-    {
+    getHasUserJoined() {
         return this.hasUserJoined;
     }
 
 }
-module.exports=Meeting;
+
+module.exports = Meeting;

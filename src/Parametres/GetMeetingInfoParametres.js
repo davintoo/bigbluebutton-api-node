@@ -1,35 +1,36 @@
 var Base = require('./BaseParametres');
-class getInfoMeetingParameteres extends Base{
-    constructor(meetingId,password)
-    {   super();
-        this.password  = password;
+
+class getInfoMeetingParameteres extends Base {
+    constructor(meetingId, password) {
+        super();
+        this.password = password;
         this.meetingId = meetingId;
     }
 
-    getMeetingId()
-    {
+    getMeetingId() {
         return this.meetingId;
     }
-    getPassword()
-    {
+
+    getPassword() {
         return this.password;
     }
 
-    setPassword(password)
-    {
-        this.password=password;
-        return  this;
+    setPassword(password) {
+        this.password = password;
+        return this;
     }
-    setMeetingId(meetingId)
-    {
-        this.meetingId=meetingId;
-        return  this;
+
+    setMeetingId(meetingId) {
+        this.meetingId = meetingId;
+        return this;
     }
-    getHTTPQuery()
-    {
+
+    getHTTPQuery() {
         return super.buildHTTPQuery(
-            {   'meetingID' : this.meetingId,
-                'password'  :this.password});
+            {
+                'meetingID': this.meetingId,
+                'password': this.password
+            });
     }
 
     // constructor(ReturnCode, meetingName, meetingID, internalMeetingID, createTime, createDate, voiceBridge, dialNumber, attendeePW, moderatorPW, running, duration, hasUserJoined, recording, hasBeenForciblyEnded, startTime, endTime, participantCount, listenerCount, voiceParticipantCount, videoCount, maxUsers, moderatorCount)
@@ -175,4 +176,5 @@ class getInfoMeetingParameteres extends Base{
     // }
 
 }
-module.exports=getInfoMeetingParameteres;
+
+module.exports = getInfoMeetingParameteres;

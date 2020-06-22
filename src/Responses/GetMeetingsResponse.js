@@ -1,10 +1,11 @@
-var BaseResponse = require('./BaseResponse');
+const BaseResponse = require('./BaseResponse');
 var Meeting = require('../core/Meeting');
+
 class GetMeetingsResponse extends BaseResponse {
     constructor(xml) {
         super(xml);
         this.meetings = [];
-        for (var i=0 ;i<this.rawXML.response.meetings.meeting.length;i++) {
+        for (var i = 0; i < this.rawXML.response.meetings.meeting.length; i++) {
             this.meetings[i] = new Meeting(this.rawXML.response.meetings.meeting[i]);
         }
 
@@ -14,7 +15,7 @@ class GetMeetingsResponse extends BaseResponse {
         if (this.meetings) {
             return this.meetings;
         } else {
-            for (var i=0 ;i<this.rawXML.response.meetings.meeting.length;i++) {
+            for (var i = 0; i < this.rawXML.response.meetings.meeting.length; i++) {
                 this.meetings[i] = new Meeting(this.rawXML.response.meetings.meeting[i]);
             }
             return this.meetings;
@@ -22,4 +23,5 @@ class GetMeetingsResponse extends BaseResponse {
 
     }
 }
-module.exports=GetMeetingsResponse ;
+
+module.exports = GetMeetingsResponse;

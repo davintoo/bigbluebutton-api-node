@@ -1,13 +1,13 @@
-var BaseResponse = require('./BaseResponse');
-class DeleteRecordingsResponse extends BaseResponse{
-    constructor(rawXML)
-    {
+const BaseResponse = require('./BaseResponse');
+
+class DeleteRecordingsResponse extends BaseResponse {
+    constructor(rawXML) {
         super(rawXML);
     }
-    isDeleted()
-    {
-       return  this.rawXML.response.deleted._text;
+
+    isDeleted() {
+        return this.rawXML.response.deleted._text;
     }
 }
 
-module.exports=DeleteRecordingsResponse;
+module.exports = DeleteRecordingsResponse;

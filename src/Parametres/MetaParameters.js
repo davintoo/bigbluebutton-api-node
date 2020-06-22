@@ -1,27 +1,25 @@
 var Base = require('./BaseParametres');
-class MetaParameters extends Base
-{
+
+class MetaParameters extends Base {
 
     //private $meta = [];
-    constructor(){
+    constructor() {
         super();
-        this.meta={};
+        this.meta = {};
     }
 
-    getMeta(key)
-{
-    return this.meta[key];
-}
+    getMeta(key) {
+        return this.meta[key];
+    }
 
-    addMeta(key, value)
-{
-    this.meta[key] = value;
-    return this;
-}
+    addMeta(key, value) {
+        this.meta[key] = value;
+        return this;
+    }
+
     buildMeta(queries) {
         if (Object.keys(this.meta).length !== 0) {
-            for (const key of Object.keys(this.meta))
-            {
+            for (const key of Object.keys(this.meta)) {
                 queries['meta_' + key] = this.meta[key];
             }
         }
@@ -29,9 +27,10 @@ class MetaParameters extends Base
         return queries;
 
     }
-    hTTPQuery(queries)
-    {
+
+    hTTPQuery(queries) {
         return super.buildHTTPQuery(queries);
     }
 }
-module.exports=MetaParameters;
+
+module.exports = MetaParameters;

@@ -1,36 +1,38 @@
 var Base = require('./BaseParametres');
+
 class publishRecordingsParameteres extends Base {
-    constructor(recordingId, publish)
-    {   super();
+    constructor(recordingId, publish) {
+        super();
         this.recordingId = recordingId;
-        this.publish     = publish;
+        this.publish = publish;
     }
-    getRecordingId()
-    {
+
+    getRecordingId() {
         return this.recordingId;
     }
-    setRecordingId(recordingId)
-    {
+
+    setRecordingId(recordingId) {
         this.recordingId = recordingId;
         return this;
     }
-    isPublish()
-    {
+
+    isPublish() {
         return this.publish;
     }
-    setPublish(publish)
-    {
+
+    setPublish(publish) {
         this.publish = publish;
     }
-    getHTTPQuery()
-    {
+
+    getHTTPQuery() {
         return super.buildHTTPQuery(
             {
                 'recordID': this.recordingId,
                 'publish': this.publish /*? 'true' : 'false'*/
             }
-    );
+        );
     }
 
 }
-module.exports=publishRecordingsParameteres;
+
+module.exports = publishRecordingsParameteres;

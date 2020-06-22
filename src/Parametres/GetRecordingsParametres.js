@@ -1,36 +1,34 @@
 var MetaParameters = require('./MetaParameters');
 
-class getRecordingsParameteres extends MetaParameters{
-    getMeetingId()
-    {
+class getRecordingsParameteres extends MetaParameters {
+    getMeetingId() {
         return this.meetingId;
     }
 
-    setMeetingId(meetingId)
-    {
+    setMeetingId(meetingId) {
         this.meetingId = meetingId;
         return this;
     }
-   getRecordId()
-    {
+
+    getRecordId() {
         return this.recordId;
     }
-    setRecordId(recordId)
-    {
+
+    setRecordId(recordId) {
         this.recordId = recordId;
         return this;
     }
-    getState()
-    {
+
+    getState() {
         return this.state;
     }
-    setState(state)
-    {
+
+    setState(state) {
         this.state = state;
         return this;
     }
-    getHTTPQuery()
-    {
+
+    getHTTPQuery() {
         var queries = {
             'meetingID': this.meetingId,
             'recordID': this.recordId,
@@ -41,6 +39,7 @@ class getRecordingsParameteres extends MetaParameters{
 
         return super.hTTPQuery(queries);
     }
+
     // constructor(ReturnCode, recordID, meetingID, name, published, state, startTime, endTime, type, url, length) {
     //     super();
     //     this.ReturnCode = ReturnCode;
@@ -103,4 +102,5 @@ class getRecordingsParameteres extends MetaParameters{
     //     return this.length;
     // }
 }
-module.exports=getRecordingsParameteres;
+
+module.exports = getRecordingsParameteres;

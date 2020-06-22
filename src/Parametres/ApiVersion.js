@@ -1,18 +1,18 @@
 var Base = require('./BaseParametres');
 
 class ApiVersionParameteres extends Base {
-    constructor(returnCode,running) {
-    super();
+    constructor(returnCode, running) {
+        super();
         this.returnCode = returnCode;
         this.running = running;
 
 
-
     }
-    getReturnCode()
-    {
+
+    getReturnCode() {
         return this.returnCode;
     }
+
     getRunning() {
         return this.running;
     }
@@ -21,5 +21,4 @@ class ApiVersionParameteres extends Base {
 }
 
 
-
-module.exports=ApiVersionParameteres;
+module.exports = ApiVersionParameteres;

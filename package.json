@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "main": "main.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/riadvice/bigbluebutton-api-node.git"
@@ -18,20 +17,14 @@
     "node": ">=4.2.4"
   },
   "homepage": "https://github.com/riadvice/bigbluebutton-api-node#readme",
-  "devDependencies": {
-    "electron-rebuild": "^1.8.2"
-  },
+  "devDependencies": {},
   "dependencies": {
     "assert": "^1.4.1",
     "crypto": "^1.0.1",
     "faker": "^4.1.0",
     "getenv": "^0.7.0",
+    "node-fetch": "^2.6.0",
     "jshint": "^2.9.5",
-    "nedb": "^1.8.0",
-    "node-libcurl": "^1.3.2",
-    "npm": "^6.3.0",
-    "sqlite3": "^4.0.2",
-    "tedb": "^0.5.1",
     "xml-js": "^1.6.4",
     "xml-writer": "^1.7.0"
   }

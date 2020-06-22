@@ -1,16 +1,16 @@
-var BaseResponse = require('./BaseResponse');
+const BaseResponse = require('./BaseResponse');
 
 class PublishRecordingsResponse extends BaseResponse {
-    constructor(rawXML)
-    {
+    constructor(rawXML) {
         super(rawXML);
     }
-    isPublished()
-    {
+
+    isPublished() {
         return this.rawXML.response.published._text;
 
     }
 
 
 }
-module.exports=PublishRecordingsResponse;
+
+module.exports = PublishRecordingsResponse;

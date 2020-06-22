@@ -1,12 +1,12 @@
-var BaseResponse = require('./BaseResponse');
+const BaseResponse = require('./BaseResponse');
 
 class JoinMeetingResponse extends BaseResponse {
-    constructor(rawXML)
-    {
+    constructor(rawXML) {
         super(rawXML);
     }
+
     getMeetingId() {
-        return this.rawXML.response.meeting_id._text ;
+        return this.rawXML.response.meeting_id._text;
     }
 
     getUserId() {
@@ -20,7 +20,6 @@ class JoinMeetingResponse extends BaseResponse {
     getSessionToken() {
         return this.rawXML.response.session_token._text;
     }
-
-
 }
-module.exports=JoinMeetingResponse;
+
+module.exports = JoinMeetingResponse;
