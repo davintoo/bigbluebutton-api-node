@@ -13,7 +13,7 @@ const JoinMeetingResponse = require('./Responses/joinMeetingResponse');
 const IsMeetingRunningResponse = require('./Responses/IsMeetingRunningResponse');
 // var GetMeetingsResponse = require('./Responses/GetMeetingsResponse');
 const GetMeetingInfoResponse = require('./Responses/GetMeetingInfoResponse');
-// var GetRecordingsResponse = require('./Responses/GetRecordingsResponse');
+const GetRecordingsResponse = require('./Responses/GetRecordingsResponse');
 // var PublishRecordingsResponse = require('./Responses/PublishRecordingsResponse');
 // var DeleteRecordingsResponse = require('./Responses/DeleteRecordingsResponse');
 // var UpdateRecordingsResponse = require('./Responses/UpdateRecordingsResponse');
@@ -111,17 +111,11 @@ class BigBlueButton {
             'GetMeetingInfoResponse');
     }
 
-    // getRecordingsUrl(recordingParams) {
-    //     console.log(recordingParams.getHTTPQuery());
-    //     return this.urlBuilder.buildUrl(new ApiMethod().GET_RECORDINGS, recordingParams.getHTTPQuery());
-    // }
-    //
-    // getRecordings(callback, recordingParams) {
-    //     var url = this.getRecordingsUrl(recordingParams);
-    //     console.log(url);
-    //     this.processXmlResponse(url, 'GetRecordingsResponse', callback);
-    //
-    // }
+    async getRecordings(recordingParams) {
+        return this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().GET_RECORDINGS, querystring.stringify(recordingParams)),
+            'GetRecordingsResponse');
+
+    }
     //
     // getPublishRecordingsUrl(recordingParams) {
     //     return this.urlBuilder.buildUrl(new ApiMethod().PUBLISH_RECORDINGS, recordingParams.getHTTPQuery());
@@ -154,7 +148,7 @@ class BigBlueButton {
     // }
 
     async processXmlResponse(url, className, payload = '') {
-        console.log('processXmlResponse.url', url);
+        // console.log('processXmlResponse.url', url);
         let options = {};
         if (payload !== '') {
             options.method = 'POST';
@@ -166,7 +160,7 @@ class BigBlueButton {
                 // 'Authorization': 'Bearer ' + this._token
             },
         }).then(res => res.text());
-        console.log('processXmlResponse.body', body);
+        // console.log('processXmlResponse.body', body);
 
         const classResponse = dynamicClass(className);
         // const obj = new classResponse(body);

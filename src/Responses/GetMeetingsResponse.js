@@ -1,5 +1,5 @@
 const BaseResponse = require('./BaseResponse');
-var Meeting = require('../core/Meeting');
+const Meeting = require('../core/Meeting');
 
 class GetMeetingsResponse extends BaseResponse {
     constructor(xml) {
