@@ -4,9 +4,6 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "rebuild": "electron-rebuild -f -w sqlite3",
-    "postinstall": "cd node_modules/sqlite3 && npm install nan && node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-win32-x64 && node-gyp rebuild --target=1.4.13 --arch=x64 --target_platform=win32 --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-win32-x64"
   },
   "repository": {
     "type": "git",
@@ -27,8 +24,6 @@
   "dependencies": {
     "assert": "^1.4.1",
     "crypto": "^1.0.1",
-    "electron": "^2.0.7",
-    "electron-builder": "^20.27.1",
     "faker": "^4.1.0",
     "getenv": "^0.7.0",
     "jshint": "^2.9.5",
