@@ -8,8 +8,17 @@ class Record {
         this.state = xml.state._text;
         this.startTime = parseFloat(xml.startTime._text);
         this.endTime = parseFloat(xml.endTime._text);
-        this.playbackType = xml.playback.format.type._text;
-        this.playbackUrl = xml.playback.format.url._text;
+        if (Array.isArray(xml.playback.format)) {
+            for (const format of xml.playback.format) {
+                if (format.type._text === 'presentation') {
+                    this.playbackType = format.type._text;
+                    this.playbackUrl = format.url._text;
+                }
+            }
+        } else {
+            this.playbackType = xml.playback.format.type._text;
+            this.playbackUrl = xml.playback.format.url._text;
+        }
         this.playbackLength = parseInt(xml.playback.format.length._text);
         this.metas = [];
         if (xml.metadata['bbb-context']) {
