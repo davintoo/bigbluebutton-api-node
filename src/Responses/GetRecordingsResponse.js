@@ -10,7 +10,7 @@ class GetRecordingssResponse extends BaseResponse {
 
     _parseRecords() {
         // console.log('this.rawXML', this.rawXML.response);
-        if (Array.isArray(this.rawXML.response.meetings.meeting)) {
+        if (Array.isArray(this.rawXML.response.recordings.recording)) {
             for (var i = 0; i < this.rawXML.response.recordings.recording.length; i++) {
                 this.records[i] = new Record(this.rawXML.response.recordings.recording[i]);
             }
