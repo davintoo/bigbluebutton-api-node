@@ -3,30 +3,21 @@ const querystring = require('querystring');
 const UrlBuilder = require('./Util/UrlBuilder');
 const ApiMethod = require('./core/ApiMethod');
 const parse = require('xml-js');
-// var parse = require('xml-js');
-// var Curl = require('node-libcurl').Curl;
-// var fs = require('fs');
+
 const ApiVersionResponse = require('./Responses/ApiVersionResponse');
-// var SetConfigXMLResponse = require('./Responses/SetConfigXMLResponse');
 const JoinMeetingResponse = require('./Responses/joinMeetingResponse');
-// var EndMeetingResponse = require('./Responses/EndMeetingResponse');
+const EndMeetingResponse = require('./Responses/EndMeetingResponse');
 const IsMeetingRunningResponse = require('./Responses/IsMeetingRunningResponse');
-// var GetMeetingsResponse = require('./Responses/GetMeetingsResponse');
+const GetMeetingsResponse = require('./Responses/GetMeetingsResponse');
 const GetMeetingInfoResponse = require('./Responses/GetMeetingInfoResponse');
 const GetRecordingsResponse = require('./Responses/GetRecordingsResponse');
 // var PublishRecordingsResponse = require('./Responses/PublishRecordingsResponse');
 // var DeleteRecordingsResponse = require('./Responses/DeleteRecordingsResponse');
 // var UpdateRecordingsResponse = require('./Responses/UpdateRecordingsResponse');
-// var CreateMeetingParametres = require('../src/Parametres/CreateMeetingParametres');
-// var GetMeetingInfoParameters = require('../src/Parametres/GetMeetingInfoParametres');
-// var strlen = require('locutus/php/strings/strlen');
-var dynamicClass = require('./Responses/ResponseClassFactory.js');
-
-
+const dynamicClass = require('./Responses/ResponseClassFactory.js');
 const fetch = require('node-fetch');
 
 class BigBlueButton {
-
     constructor(bbbServerBaseUrl, securitySalt) {
         this.securitySalt = securitySalt || getenv('BBB_SECURITY_SALT');
         this.bbbServerBaseUrl = bbbServerBaseUrl || getenv('BBB_SERVER_BASE_URL');
@@ -42,27 +33,6 @@ class BigBlueButton {
             'CreateMeetingResponse', parse.json2xml(createMeetingParams, {compact: true}));
     }
 
-    // getDefaultConfigXMLUrl() {
-    //     return this.urlBuilder.buildUrl(new ApiMethod().SET_CONFIG_XML);
-    // }
-    //
-    // getDefaultConfigXML(callback) {
-    //     var url = this.getDefaultConfigXMLUrl();
-    //     this.processXmlResponse(url, 'GetDefaultConfigXMLResponse', callback);
-    //
-    // }
-    //
-    // setConfigXML(callback, setConfigXMLParams) {
-    //     var url = this.getDefaultConfigXMLUrl();
-    //     var setConfigXMLPayload = this.urlBuilder.buildQs(new ApiMethod().SET_CONFIG_XML, setConfigXMLParams.getHTTPQuery());
-    //     this.processXmlResponse(url, 'SetConfigXMLResponse', callback, setConfigXMLPayload);
-    //
-    // }
-    //
-    // setConfigXMLUrl() {
-    //     return this.urlBuilder.buildUrl(new ApiMethod().SET_CONFIG_XML, '', false);
-    // }
-
     getJoinMeetingURL(joinMeetingParams) {
         return this.urlBuilder.buildUrl(new ApiMethod().JOIN, querystring.stringify(joinMeetingParams));
     }
@@ -71,40 +41,19 @@ class BigBlueButton {
         return this.processXmlResponse(this.getJoinMeetingURL(joinMeetingParams), 'JoinMeetingResponse');
     }
 
-    // getEndMeetingURL(endParams) {
-    //     return this.urlBuilder.buildUrl(new ApiMethod().END, endParams.getHTTPQuery());
-    // }
-    //
-    // endMeeting(callback, endParams) {
-    //     var url = this.getEndMeetingURL(endParams);
-    //     console.log(url);
-    //     this.processXmlResponse(url, 'EndMeetingResponse', callback);
-    //
-    // }
-    //
-    // getIsMeetingRunningUrl(meetingParams) {
-    //     return this.urlBuilder.buildUrl(new ApiMethod().IS_MEETING_RUNNING, meetingParams.getHTTPQuery());
-    // }
+    async endMeeting(endParams) {
+        return this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().END, querystring.stringify(endParams)),
+            'EndMeetingResponse');
+    }
 
     async isMeetingRunning(meetingParams) {
         return this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().IS_MEETING_RUNNING, querystring.stringify(meetingParams)),
             'IsMeetingRunningResponse');
     }
 
-    // getMeetingsUrl() {
-    //     return this.urlBuilder.buildUrl(new ApiMethod().GET_MEETINGS);
-    // }
-    //
-    // getMeetings(callback) {
-    //     var url = this.getMeetingsUrl();
-    //     this.processXmlResponse(url, 'GetMeetingsResponse', callback);
-    //
-    // }
-    //
-    // getMeetingInfoUrl(meetingParams) {
-    //     console.log(meetingParams.getHTTPQuery());
-    //     return ;
-    // }
+    async getMeetings() {
+        return this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().GET_MEETINGS), 'GetMeetingsResponse');
+    }
 
     async getMeetingInfo(meetingParams) {
         return this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().GET_MEETING_INFO, querystring.stringify(meetingParams)),
