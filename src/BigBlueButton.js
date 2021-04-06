@@ -52,7 +52,12 @@ class BigBlueButton {
     }
 
     async getMeetings() {
-        return this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().GET_MEETINGS), 'GetMeetingsResponse');
+        try {
+            const meetingsRes = await this.processXmlResponse(this.urlBuilder.buildUrl(new ApiMethod().GET_MEETINGS), 'GetMeetingsResponse');
+            return meetingsRes.getMeetings();
+        } catch (err) {
+            return [];
+        }
     }
 
     async getMeetingInfo(meetingParams) {
