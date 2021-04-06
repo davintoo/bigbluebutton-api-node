@@ -20,7 +20,6 @@
   "devDependencies": {},
   "dependencies": {
     "assert": "^1.4.1",
-    "crypto": "^1.0.1",
     "faker": "^4.1.0",
     "getenv": "^0.7.0",
     "node-fetch": "^2.6.0",
