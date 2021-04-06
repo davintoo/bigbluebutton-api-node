@@ -4,8 +4,8 @@ const parse = require('xml-js');
 class BaseResponse {
     constructor(rawXML) {
         this.rawXML = JSON.parse(parse.xml2json(rawXML, {compact: true}));
-        if(!this.rawXML.response) {
-            throw new Error(`Unable to find response in '${rawXML}'`);
+        if(this.rawXML.returncode != 'SUCCESS') {
+            throw new Error(`Error in BBB respounce '${JSON.stringify(this.rawXML)}'`);
         }
     }
 
