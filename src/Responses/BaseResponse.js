@@ -4,6 +4,9 @@ const parse = require('xml-js');
 class BaseResponse {
     constructor(rawXML) {
         this.rawXML = JSON.parse(parse.xml2json(rawXML, {compact: true}));
+        if(!this.rawXML.response) {
+            throw new Error(`Unable to find response in '${rawXML}'`);
+        }
     }
 
     getRawXML() {
