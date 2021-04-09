@@ -5,7 +5,8 @@ class BaseResponse {
     constructor(rawXML) {
         this.rawXML = JSON.parse(parse.xml2json(rawXML, {compact: true}));
         if(this.rawXML.returncode != 'SUCCESS') {
-            throw new Error(`Error in BBB respounce '${JSON.stringify(this.rawXML)}'`);
+            console.log(`Error in BBB respounce '${JSON.stringify(this.rawXML)}'`);
+            // throw new Error(`Error in BBB respounce '${JSON.stringify(this.rawXML)}'`);
         }
     }
 
